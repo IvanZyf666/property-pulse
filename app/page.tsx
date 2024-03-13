@@ -1,12 +1,13 @@
 import React from "react";
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import InfoBoxes from "@/components/InfoBoxes";
 import HomeProperties from "@/components/HomeProperties";
+// import connectDB from "@/config/database";
 
 type Props = {};
 
-const HomePage = (props: Props) => {
+const HomePage = async (props: Props) => {
+  // await connectDB();
   return (
     <>
       <Hero />
