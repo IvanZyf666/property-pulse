@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,12 +10,15 @@ import {
   FaMapMarker,
 } from "react-icons/fa";
 import { PropertyInterface } from "@/interfaces/PropertyInterface";
+import { useRouter } from "next/navigation";
 
 type Props = {
   property: PropertyInterface;
+  id?: string;
 };
 
-const PropertyCard = ({ property }: Props) => {
+const PropertyCard = ({ property, id }: Props) => {
+  const router = useRouter();
   const getRateDisplay = () => {
     const { rates } = property;
 
@@ -75,7 +79,7 @@ const PropertyCard = ({ property }: Props) => {
 
         <div className="border border-gray-100 mb-5"></div>
 
-        <div className="flex flex-col lg:flex-row justify-between mb-4">
+        <div className="flex flex-col lg:flex-row mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
             <FaMapMarker className="text-orange-700 mt-1" />
             <span className="text-orange-700">
@@ -83,12 +87,22 @@ const PropertyCard = ({ property }: Props) => {
               {property.location?.city} {property.location?.state}
             </span>
           </div>
-          <Link
-            href={`/properties/${property._id}`}
-            className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
-          >
-            Details
-          </Link>
+          <>
+            <Link
+              href={`/properties/${property._id}`}
+              className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm m-1 lg:ml-auto"
+            >
+              Details
+            </Link>
+            {id && (
+              <Link
+                href={"/"}
+                className="h-[36px] bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-center text-sm m-1"
+              >
+                Go Home
+              </Link>
+            )}
+          </>
         </div>
       </div>
     </div>

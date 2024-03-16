@@ -66,13 +66,9 @@ const PropertyPage = (props: Props) => {
   }, [isNotFound]);
 
   return (
-    <div>
-      <button onClick={() => router.push("/")} className="bg-blue-500 p-2">
-        Go Home
-        {/* Id:{id} {name && `Name: ${name}`} */}
-      </button>
-      <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-40">
-        {property && <PropertyCard property={property} />}
+    <div className="flex flex-col items-center">
+      <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-40 mt-8">
+        {property && <PropertyCard property={property} id={id} />}
       </div>
     </div>
   );
