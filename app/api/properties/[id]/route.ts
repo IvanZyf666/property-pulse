@@ -6,7 +6,7 @@ type ParamType = {
 };
 
 // GET /api/properties/:id
-export const GET = async (request, { params }: any) => {
+export const GET = async (request: any, { params }: any) => {
   try {
     await connectDB();
 
