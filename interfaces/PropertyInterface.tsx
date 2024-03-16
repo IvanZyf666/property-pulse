@@ -13,7 +13,7 @@ export interface PropertyInterface {
   seller_info?: SellerInfo;
   images: string[];
   is_featured?: boolean;
-  createdAt?: string;
+  createdAt: string;
   updatedAt?: string;
 }
 
