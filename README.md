@@ -1,6 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
+# Property Pulse project
+## Try out by the link: https://property-pulse-smoky.vercel.app
+![](https://img.shields.io/badge/NEXT.JS-000000?logo=nextdotjs&logoColor=white)
+![](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![](https://img.shields.io/badge/-Typescript-blue?logo=typescript&logoColor=white)
+![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white)
+![](https://img.shields.io/badge/MongoDB-4EA94B?logo=mongodb&logoColor=white)
+## Getting Started on Local
 
 First, run the development server:
 
