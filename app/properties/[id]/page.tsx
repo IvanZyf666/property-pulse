@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import properties from "@/properties.json";
 import PropertyCard from "@/components/PropertyCard";
 import {
@@ -8,8 +8,15 @@ import {
   useSearchParams,
   redirect,
 } from "next/navigation";
+import { fetchProperty } from "@/utils/requests";
 
 type Props = {};
+
+type ParamType = {
+  id: string;
+};
+
+// for client component, we cannot just fetch backend api, we have to use useEffect hook
 
 const getPropertyInfo = (properties: any, id_string: any) => {
   var id: number = +id_string; // convert to number
@@ -21,20 +28,51 @@ const getPropertyInfo = (properties: any, id_string: any) => {
 const PropertyPage = (props: Props) => {
   const router = useRouter();
   // /properties/132
-  const { id } = useParams();
+  const { id }: ParamType = useParams();
   // /properties/132?name=iamtest
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
 
-  const property = getPropertyInfo(properties, id);
+  const [property, setProperty] = useState(null);
+  const [isNotFound, setIsNotFound] = useState(false);
+
+  // const property = getPropertyInfo(properties, id);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchPropertyData = async () => {
+      try {
+        const property = await fetchProperty(id);
+        if (!property) {
+          console.log("page not found");
+          setIsNotFound(true);
+        }
+        setProperty(property);
+      } catch (error) {
+        console.error("Error fetching property:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (property === null) {
+      fetchPropertyData();
+    }
+  }, [id, property]);
+
+  useEffect(() => {
+    if (isNotFound) {
+      redirect("/not-found");
+    }
+  }, [isNotFound]);
 
   return (
     <div>
       <button onClick={() => router.push("/")} className="bg-blue-500 p-2">
-        Go Home Id:{id} {name && `Name: ${name}`}
+        Go Home
+        {/* Id:{id} {name && `Name: ${name}`} */}
       </button>
       <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-40">
-        <PropertyCard property={property} />
+        {property && <PropertyCard property={property} />}
       </div>
     </div>
   );
