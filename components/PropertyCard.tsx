@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { PropertyInterface } from "@/interfaces/PropertyInterface";
 import { useRouter } from "next/navigation";
+import "@/style/style.css";
 
 type Props = {
   property: PropertyInterface;
@@ -29,6 +30,8 @@ const PropertyCard = ({ property, id }: Props) => {
       return `${rates?.weekly.toLocaleString()}/wk`;
     }
   };
+
+  const [select, setSelect] = useState(property?.images[1]);
   return (
     <div className="rounded-xl shadow-md relative">
       <Image
@@ -39,8 +42,36 @@ const PropertyCard = ({ property, id }: Props) => {
         sizes="100vw"
         className="w-full h-auto rounded-t-xl"
       />
+
+      {id && (
+        <div className="flex flex-wrap">
+          {property.images
+            .filter((id) => id !== property.images[0])
+            .map((image) => (
+              <Image
+                className={`${
+                  select === image ? "lg:flex-grow" : "lg:flex-none lg:w-8"
+                } max-lg:basis-full lg:rounded-xl max-lg:border-t-2 lg:m-0.5 bg-cover bg-center object-cover transition-all duration-500 ease-in-out h-80`}
+                key={image}
+                src={`/images/properties/${image}`}
+                alt=""
+                id={image}
+                height={0}
+                width={0}
+                sizes="100vw"
+                onClick={(e) =>
+                  setSelect(
+                    // @ts-ignore
+                    e.target.id
+                  )
+                }
+              />
+            ))}
+        </div>
+      )}
+
       <div className="p-4">
-        <div className="text-left md:text-center lg:text-left mb-6">
+        <div className="text-left md:text-center lg:text-left mb-6 h-16">
           <div className="text-gray-600">{property.type}</div>
           <h3 className="text-xl font-bold">{property.name}</h3>
         </div>
@@ -48,7 +79,7 @@ const PropertyCard = ({ property, id }: Props) => {
           ${getRateDisplay()}
         </h3>
 
-        <div className="flex justify-center gap-4 text-gray-500 mb-4">
+        <div className="flex justify-center gap-4 text-gray-500 mb-4 ">
           <p>
             <FaBed className="inline mr-2" /> {property.beds}{" "}
             <span className="md:hidden lg:inline">Beds</span>
