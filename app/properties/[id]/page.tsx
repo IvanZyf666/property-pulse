@@ -67,7 +67,7 @@ const PropertyPage = (props: Props) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-40 mt-8">
+      <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-4 mt-8">
         {property && <PropertyCard property={property} id={id} />}
       </div>
     </div>
