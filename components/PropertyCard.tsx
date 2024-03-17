@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 import { PropertyInterface } from "@/interfaces/PropertyInterface";
 import { useRouter } from "next/navigation";
-import "@/style/style.css";
 
 type Props = {
   property: PropertyInterface;
