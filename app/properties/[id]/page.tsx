@@ -67,6 +67,7 @@ const PropertyPage = (props: Props) => {
     }
   }, [isNotFound]);
 
+  // old single page component
   // return (
   //   <div className="flex flex-col items-center">
   //     <div className="flex flex-wrap justify-center max-w-xl min-w-64 mx-4 mt-8">
@@ -74,6 +75,7 @@ const PropertyPage = (props: Props) => {
   //     </div>
   //   </div>
   // );
+
   if (!property && !loading) {
     return (
       <h1 className="='text-center text-2xl fond-bold mt-10">
