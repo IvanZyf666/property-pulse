@@ -106,7 +106,7 @@ const PropertyPage = (props: Props) => {
           <section className="bg-blue-50">
             <div className="container m-auto py-10 px-6">
               <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-                <PropertyDetails property={property} />
+                <PropertyDetails property={property} id={id} />
 
                 <aside className="space-y-4">
                   <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
