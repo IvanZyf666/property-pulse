@@ -7,12 +7,14 @@ import {
   FaCheck,
   FaMapMarker,
 } from "react-icons/fa";
+import MorePhoto from "./MorePhoto";
 
 type Props = {
   property: any;
+  id: string;
 };
 
-const PropertyDetails = ({ property }: Props) => {
+const PropertyDetails = ({ property, id }: Props) => {
   return (
     <main>
       <div className="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
@@ -95,7 +97,8 @@ const PropertyDetails = ({ property }: Props) => {
         </ul>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-        <div id="map"></div>
+        <h3 className="text-lg font-bold mb-6">More Photos</h3>
+        <MorePhoto property={property} id={id} />
       </div>
     </main>
   );
