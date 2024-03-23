@@ -10,6 +10,7 @@
     "test": "npx playwright test --project='chromium'"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.9",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.1",
     "next": "14.1.3",
