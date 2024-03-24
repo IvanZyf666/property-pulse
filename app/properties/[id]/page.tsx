@@ -96,7 +96,7 @@ const PropertyPage = (props: Props) => {
             <div className="container m-auto py-6 px-6">
               <Link
                 href="/"
-                className="text-blue-500 hover:text-blue-600 flex items-center"
+                className="back-to-properties text-blue-500 hover:text-blue-600 flex items-center"
               >
                 <FaArrowLeft className="mr-2" /> Back to Properties
               </Link>

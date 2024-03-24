@@ -18,7 +18,29 @@ test.describe("basic flow", () => {
       hasText: "Browse Properties",
     });
     expect(await browseProperties.isVisible()).toBe(true);
-    browseProperties.click();
+    browseProperties.click({ delay: 1000 });
     await testPage.waitForPage("properties");
+
+    const propertyCard = await testPage.locator(".property_card", {
+      hasText: "Ski-In/Ski-Out Chalet",
+    });
+    await propertyCard.locator(".details-btn").click({ delay: 1000 });
+
+    // console.log(propertyCard);
+
+    // expect(await propertyCard.isVisible()).toBe(true);
+    await testPage.waitFor(".more-photo");
+    await testPage.locator(".more-photo").nth(1).click({ delay: 1000 });
+
+    await testPage.locator(".back-to-properties").click({ delay: 1000 });
+
+    await testPage.waitForPage("");
+
+    await testPage.locator(".view-all-properties").click({ delay: 1000 });
+
+    await testPage.waitForPage("properties");
+    // await testPage.waitForPage("we");
+    // const todoItems = page.getByTestId("todo-item");
+    // await todoItems.nth(1).getByRole("checkbox").check();
   });
 });

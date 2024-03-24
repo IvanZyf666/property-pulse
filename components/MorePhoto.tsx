@@ -18,7 +18,7 @@ const MorePhoto = ({ property, id }: Props) => {
               <Image
                 className={`${
                   select === image ? "lg:flex-grow" : "lg:flex-none lg:w-8"
-                } max-lg:basis-full lg:rounded-xl max-lg:border-t-2 lg:m-0.5 bg-cover bg-center object-cover transition-all duration-500 ease-in-out h-80 rounded-sm `}
+                } more-photo max-lg:basis-full lg:rounded-xl max-lg:border-t-2 lg:m-0.5 bg-cover bg-center object-cover transition-all duration-500 ease-in-out h-80 rounded-sm `}
                 key={image}
                 src={`/images/properties/${image}`}
                 alt=""

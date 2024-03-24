@@ -16,8 +16,9 @@ export default class PropertyPulse {
   }
 
   async waitForPage(pageName: string) {
+    // timeout means response cannot exceed timeout time
     if (!this.page.url().endsWith(pageName)) {
-      await this.page.waitForURL(`**/${pageName}`);
+      await this.page.waitForURL(`**/${pageName}`, { timeout: 5000 });
     }
   }
 
@@ -38,11 +39,12 @@ export default class PropertyPulse {
   }
 
   locator(selector: string, options = {}) {
+    // look for the div which className contains selector string
     return this.page.locator(selector, options);
   }
 
   async waitFor(selector: string) {
-    await this.page.waitForSelector(selector);
+    await this.page.waitForSelector(selector, { timeout: 5000 });
   }
 
   async fillInputField(fieldText: string, input: string) {
