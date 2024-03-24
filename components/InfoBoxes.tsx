@@ -15,6 +15,7 @@ const InfoBoxes = (props: Props) => {
               text: "Browse Properties",
               link: "/properties",
               backgroundColor: "bg-black",
+              id: "browse_properties",
             }}
             // textColor="text-gray-800"
           >
@@ -28,6 +29,7 @@ const InfoBoxes = (props: Props) => {
               text: "Add Property",
               link: "/properties/add",
               backgroundColor: "bg-blue-500",
+              id: "add_property",
             }}
             // textColor="text-gray-800"
           >

@@ -1,18 +1,24 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
+import PropertyPulse from "./models/property";
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+const rootURL = "http://localhost:3000";
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+test.describe("basic flow", () => {
+  let testPage: PropertyPulse;
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  test("happy test", async ({ page }) => {
+    testPage = new PropertyPulse(page);
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+    // const {userName, password } = process.env.PROD
+    await testPage.startWithURL("http://localhost:3000");
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+    await testPage.waitFor(".browse_properties");
+
+    const browseProperties = await testPage.locator(".browse_properties", {
+      hasText: "Browse Properties",
+    });
+    expect(await browseProperties.isVisible()).toBe(true);
+    browseProperties.click();
+    await testPage.waitForPage("properties");
+  });
 });
