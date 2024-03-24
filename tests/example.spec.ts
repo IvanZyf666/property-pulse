@@ -39,8 +39,27 @@ test.describe("basic flow", () => {
     await testPage.locator(".view-all-properties").click({ delay: 1000 });
 
     await testPage.waitForPage("properties");
-    // await testPage.waitForPage("we");
-    // const todoItems = page.getByTestId("todo-item");
-    // await todoItems.nth(1).getByRole("checkbox").check();
+  });
+
+  test("happy test google login", async ({ page }) => {
+    testPage = new PropertyPulse(page);
+
+    await testPage.startWithURL("http://localhost:3000");
+
+    await testPage.waitFor(".browse_properties");
+
+    await testPage.locator(".loginBtn-desktop").click({ delay: 1000 });
+
+    await testPage.waitForPage("sign-in");
+
+    await testPage
+      .locator(".cl-main")
+      .locator(".cl-formFieldInput")
+      .nth(0)
+      .type("test@gmail.com", { delay: 100 });
+
+    await testPage
+      .locator(".cl-formButtonPrimary", { hasText: "continue" })
+      .click({ delay: 1000 });
   });
 });

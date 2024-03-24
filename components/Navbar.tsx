@@ -96,7 +96,7 @@ const Navbar = (props: Props) => {
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
                 <Link
-                  className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className="loginBtn-desktop flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                   href={"/sign-in"}
                 >
                   <FaGoogle className="text-white mr-2" />
@@ -233,7 +233,7 @@ const Navbar = (props: Props) => {
             )}
             {!isLoggedIn && (
               <Link
-                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+                className="loginBtn-mobile flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
                 href={"/sign-in"}
               >
                 <FaGoogle className="text-white mr-2" />
