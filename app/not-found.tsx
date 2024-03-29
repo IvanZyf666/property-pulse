@@ -9,6 +9,10 @@ const NotFoundPage = (props: Props) => {
   const router = useRouter();
   const handleBackToHome = () => {
     router.replace("/");
+    setTimeout(() => {
+      // refresh page
+      window.location.reload();
+    }, 1000);
   };
 
   return (
