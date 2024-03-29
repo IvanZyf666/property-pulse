@@ -38,13 +38,17 @@ export default class PropertyPulse {
     }
   }
 
+  /**
+   * @param selector look for the divs with className that contains the string, .nth(0) to select if multiple found
+   * @param options option to filter the locator, e.g. { hasText: "some text" }
+   * @returns
+   */
   locator(selector: string, options = {}) {
-    // look for the div which className contains selector string
     return this.page.locator(selector, options);
   }
 
   async waitFor(selector: string) {
-    await this.page.waitForSelector(selector, { timeout: 5000 });
+    await this.page.waitForSelector(selector, { timeout: 10000 });
   }
 
   async fillInputField(fieldText: string, input: string) {

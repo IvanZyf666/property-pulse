@@ -12,7 +12,7 @@ const NotFoundPage = (props: Props) => {
   };
 
   return (
-    <section className="bg-blue-50 min-h-screen flex-grow">
+    <section className="not-found-page bg-blue-50 min-h-screen flex-grow">
       <div className="container m-auto max-w-2xl py-24">
         <div className="bg-white px-6 py-24 mb-4 shadow-md rounded-md border m-4 md:m-0">
           <div className="flex justify-center">

@@ -8,9 +8,8 @@ test.describe("basic flow", () => {
 
   test("happy test", async ({ page }) => {
     testPage = new PropertyPulse(page);
-
     // const {userName, password } = process.env.PROD
-    await testPage.startWithURL("http://localhost:3000");
+    await testPage.startWithURL(rootURL);
 
     await testPage.waitFor(".browse_properties");
 
@@ -26,25 +25,34 @@ test.describe("basic flow", () => {
     });
     await propertyCard.locator(".details-btn").click({ delay: 1000 });
 
-    // console.log(propertyCard);
-
-    // expect(await propertyCard.isVisible()).toBe(true);
     await testPage.waitFor(".more-photo");
     await testPage.locator(".more-photo").nth(1).click({ delay: 1000 });
 
     await testPage.locator(".back-to-properties").click({ delay: 1000 });
 
-    await testPage.waitForPage("");
+    await testPage.waitFor(".browse_properties");
 
     await testPage.locator(".view-all-properties").click({ delay: 1000 });
 
     await testPage.waitForPage("properties");
   });
 
+  test("show not found page if url is invalid", async ({ page }) => {
+    testPage = new PropertyPulse(page);
+
+    await testPage.startWithURL(rootURL + "/invalid-url");
+
+    const notFound = await testPage.locator(".not-found-page");
+
+    await notFound.getByRole("button", { name: "Go Home" }).click();
+
+    await testPage.waitFor(".browse_properties");
+  });
+
   test("happy test google login", async ({ page }) => {
     testPage = new PropertyPulse(page);
 
-    await testPage.startWithURL("http://localhost:3000");
+    await testPage.startWithURL(rootURL);
 
     await testPage.waitFor(".browse_properties");
 
