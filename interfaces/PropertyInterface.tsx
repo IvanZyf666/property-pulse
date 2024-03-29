@@ -1,10 +1,10 @@
 export interface PropertyInterface {
   _id: string;
   owner?: string;
-  name?: string;
-  type?: string;
-  description?: string;
-  location?: Location;
+  name: string;
+  type: string;
+  description: string;
+  location: Location;
   beds?: number;
   baths?: number;
   square_feet?: number;
@@ -18,10 +18,10 @@ export interface PropertyInterface {
 }
 
 export interface Location {
-  street?: string;
-  city?: string;
-  state?: string;
-  zipcode?: string;
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string;
 }
 
 export interface Rates {
