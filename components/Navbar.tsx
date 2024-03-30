@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FaGoogle } from "react-icons/fa";
 
 import logo from "@/public/images/logo-white.png";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 type Props = {};
 
@@ -95,14 +96,30 @@ const Navbar = (props: Props) => {
           {!isLoggedIn && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
-                <Link
-                  className="loginBtn-desktop flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  href={"/sign-in"}
-                >
-                  <FaGoogle className="text-white mr-2" />
-                  <span>Login or Register</span>
-                </Link>
+                <SignedOut>
+                  <Link
+                    className="loginBtn-desktop flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                    href={"/sign-in"}
+                  >
+                    <FaGoogle className="text-white mr-2" />
+                    <span>Login or Register</span>
+                  </Link>
+                </SignedOut>
               </div>
+              <SignedIn>
+                {/* Mount the UserButton component */}
+                <UserButton
+                  appearance={{
+                    elements: {
+                      userButtonAvatarBox: {
+                        width: "42px",
+                        height: "42px",
+                      },
+                    },
+                  }}
+                  afterSignOutUrl="/"
+                />
+              </SignedIn>
             </div>
           )}
 
