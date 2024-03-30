@@ -107,7 +107,6 @@ const Navbar = (props: Props) => {
                 </SignedOut>
               </div>
               <SignedIn>
-                {/* Mount the UserButton component */}
                 <UserButton
                   appearance={{
                     elements: {
@@ -221,7 +220,7 @@ const Navbar = (props: Props) => {
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
       {isMobileMenuOpen && (
         <div id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2">
+          <div className="space-y-1 px-2 pb-3 pt-2 md:hidden">
             <Link
               href="/"
               className={`${
@@ -238,17 +237,8 @@ const Navbar = (props: Props) => {
             >
               Properties
             </Link>
-            {isLoggedIn && (
-              <Link
-                href="/properties/add"
-                className={`${
-                  pathname === "/properties/add" ? "bg-black" : ""
-                } hover:bg-gray-800 text-white block rounded-md px-3 py-2 text-base font-medium`}
-              >
-                Add Property
-              </Link>
-            )}
-            {!isLoggedIn && (
+
+            <SignedOut>
               <Link
                 className="loginBtn-mobile flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
                 href={"/sign-in"}
@@ -256,7 +246,22 @@ const Navbar = (props: Props) => {
                 <FaGoogle className="text-white mr-2" />
                 <span>Login or Register</span>
               </Link>
-            )}
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: {
+                      width: "42px",
+                      height: "42px",
+                      margin: "10px",
+                    },
+                  },
+                }}
+                afterSignOutUrl="/"
+              />
+            </SignedIn>
           </div>
         </div>
       )}
