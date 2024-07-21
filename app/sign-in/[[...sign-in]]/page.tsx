@@ -7,7 +7,7 @@ type Props = {};
 const SignUpPage = (props: Props) => {
   const [loading, setLoading] = React.useState(false);
   return (
-    <div className="w-screen flex justify-center mt-8">
+    <div className="w-screen flex justify-center mt-20">
       {/* {loading && <Spinner loading={loading} />} */}
       <SignIn />
     </div>
